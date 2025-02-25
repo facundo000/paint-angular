@@ -1,0 +1,23 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(100, 1fr);
+    gap: 2px;
+    background-color: #ddd;    
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  -webkit-user-select: none;
+  }
+  
+  .cell {
+    background-color: white;
+    aspect-ratio: 1; 
+    transition: background-color 0.2s;    
+    touch-action: none;
+  }
+  
+  .cell:hover {
+    filter: brightness(90%);
+  }
