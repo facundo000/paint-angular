@@ -1,27 +1,27 @@
 # Paint
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+Este proyecto se generó utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 19.1.6.
 
 ```bash
 npm install -g @angular/cli
 ```
 
-## Development server
+## Servidor de desarrollo
 
-To start a local development server, run:
+Para iniciar un servidor de desarrollo local, ejecute:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Una vez que el servidor se esté ejecutando, abra su navegador y navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente cada vez que modifique cualquiera de los archivos fuente.
 
-## [technical test ](../paint/src/assets/2do%20test%20programadores%20front%20end.pdf) instructions.
+## [Especificaciones técnicas; ](https://github.com/facundo000/paint-angular/blob/main/src/assets/2do%20test%20programadores%20front%20end.pdf) instrucciones:
 
-## Bottom line
+## Muestra 
  <video width="600" controls> <source src="./src/assets/demo.mp4" type="video/mp4"> 
 
-## Explanation
+## Explicación
 ## Implementación de la Cuadrícula Interactiva  
 
 ### 📏 Configuración de la Cuadrícula  

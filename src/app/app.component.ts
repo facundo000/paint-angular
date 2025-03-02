@@ -1,6 +1,7 @@
 import { Cell } from '../interfaces/cell';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { WebsocketsService } from './services/websockets.service';
 
 @Component({
   selector: 'app-root',  
@@ -8,7 +9,11 @@ import { Component, HostListener, signal } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy  {
+  ngOnDestroy(): void {
+    this.wsService.disconnect();
+  }
+
   title = 'paint';  
 
   public cells = signal<Cell[]>([]);
@@ -21,9 +26,25 @@ export class AppComponent {
   private isDragging = signal<boolean>(false);
   private lastTouchedCell = signal<Cell | null>(null);
 
+  private wsService = inject(WebsocketsService)
+
   ngOnInit() {
     this.calculateGrid();
     this.generateCells();
+    this.wsService.onInitialGrid((grid) => {
+      this.cells.update(currentCells => 
+        currentCells.map(cell => ({
+          ...cell,
+          color: grid[cell.id] || null
+        }))
+      );
+    });
+
+    this.wsService.onCellUpdate((data) => {
+      // Actualizar celda específica
+      const cell = this.cells().find(c => c.id === data.id);
+      if (cell) cell.color = data.color;
+    });
   }
 
   @HostListener('window:resize')
@@ -44,15 +65,11 @@ export class AppComponent {
     })));
   }
 
-  toggleCell(cell: Cell, isDrag = false) {
-    if(!isDrag) {
-      cell.color = cell.color ? null : this.selectedColor();
-      return;
-    }
-
-    if (!cell.color) {
-      cell.color = this.selectedColor();
-    }
+  toggleCell(cell: any) {
+    this.wsService.updateCell({
+      id: cell.id,
+      color: cell.color ? null : this.selectedColor()
+    });
   }
 
   onRightClick(event: MouseEvent, cell: Cell) {
@@ -95,7 +112,7 @@ export class AppComponent {
       const cell = this.cells().find(c => c.id === cellId);
       
       if (cell && cell !== this.lastTouchedCell()) {
-        this.toggleCell(cell, true);
+        this.toggleCell(cell); //(cell,true)
         this.lastTouchedCell.set(cell);
       }
     }
