@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { environment } from '../../environments/environment';
-import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebsocketsService {
-private socket = io('http://localhost:3000') 
-
+  // private url = environment.wsUrl;
+  
+  // private socket = io(this.url) 
+  private socket = io('https://paint-nest-angular-websocket-production.up.railway.app') 
+  
    // Escuchar eventos del servidor
   onCellUpdate(callback: (data: any) => void) {
     this.socket.on('cell-updated', callback);
