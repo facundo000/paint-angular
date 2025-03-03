@@ -61,3 +61,7 @@ Una vez que el servidor se esté ejecutando, abra su navegador y navegue hasta `
 - `user-select: none`: Evita la selección accidental de texto.  
 - `event.button === 0`: Asegura que solo se detecte el **clic izquierdo**.  
 - `toggleCell(isDrag)`: Ahora permite que, durante el arrastre, **solo se pinten celdas no coloreadas**.  
+
+### 🌐 Websocket
+- Varios usuarios podrán dibujar en una misma hoja
+- Se utilizó NestJS `https://github.com/facundo000/paint-nest-angular-websocket/tree/main`

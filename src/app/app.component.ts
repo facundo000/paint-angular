@@ -65,11 +65,21 @@ export class AppComponent implements OnInit, OnDestroy  {
     })));
   }
 
-  toggleCell(cell: any) {
-    this.wsService.updateCell({
-      id: cell.id,
-      color: cell.color ? null : this.selectedColor()
-    });
+  toggleCell(cell: any, isDrag: boolean = false) {
+
+    if (isDrag) {
+      this.wsService.updateCell({
+        id: cell.id,
+        color: this.selectedColor() // Siempre aplica el color
+      });
+    } 
+    // Si es un click, togglea entre color/nulo
+    else {
+      this.wsService.updateCell({
+        id: cell.id,
+        color: cell.color ? null : this.selectedColor()
+      });
+    }
   }
 
   onRightClick(event: MouseEvent, cell: Cell) {
@@ -105,6 +115,7 @@ export class AppComponent implements OnInit, OnDestroy  {
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     if (!this.isDragging()) return;
+    event.preventDefault();
 
     const target = event.target as HTMLElement;
     if (target.classList.contains('cell')) {
@@ -112,7 +123,7 @@ export class AppComponent implements OnInit, OnDestroy  {
       const cell = this.cells().find(c => c.id === cellId);
       
       if (cell && cell !== this.lastTouchedCell()) {
-        this.toggleCell(cell); //(cell,true)
+        this.toggleCell(cell,true);
         this.lastTouchedCell.set(cell);
       }
     }
