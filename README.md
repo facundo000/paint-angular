@@ -16,7 +16,7 @@ ng serve
 
 Una vez que el servidor se esté ejecutando, abra su navegador y navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente cada vez que modifique cualquiera de los archivos fuente.
 
-## [Especificaciones técnicas; ](https://github.com/facundo000/paint-angular/blob/main/src/assets/2do%20test%20programadores%20front%20end.pdf) instrucciones:
+## [Especificaciones técnicas ](https://github.com/facundo000/paint-angular/blob/main/src/assets/2do%20test%20programadores%20front%20end.pdf)
 
 ## Mira la demostración en YouTube
 [![Mira el video](https://img.youtube.com/vi/yx-Y_TZOfys/0.jpg)](https://www.youtube.com/watch?v=yx-Y_TZOfys)
