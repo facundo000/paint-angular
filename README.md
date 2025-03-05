@@ -18,10 +18,11 @@ Una vez que el servidor se esté ejecutando, abra su navegador y navegue hasta `
 
 ## [Especificaciones técnicas; ](https://github.com/facundo000/paint-angular/blob/main/src/assets/2do%20test%20programadores%20front%20end.pdf) instrucciones:
 
-## Muestra 
- <video width="600" controls> <source src="./src/assets/demo.mp4" type="video/mp4"> 
+## Mira la demostración en YouTube
+[![Mira el video](https://img.youtube.com/vi/yx-Y_TZOfys/0.jpg)](https://www.youtube.com/watch?v=yx-Y_TZOfys)
 
-## Explicación
+
+### Explicación
 ## Implementación de la Cuadrícula Interactiva  
 
 ### 📏 Configuración de la Cuadrícula  
